@@ -16,6 +16,7 @@ export const disconnected = createEvent<Player>();
 export const playersReceived = createEvent<string[]>();
 
 $player.on(connected, (_, player) => ({ ...player }));
+$player.on(disconnected, (_, player) => ({ ...player }));
 $status.on(connected, (_, __) => "online");
 $status.on(disconnected, (_, __) => "offline");
 $status.on(playersReceived, (_, __) => "in-game");
