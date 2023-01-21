@@ -7,6 +7,7 @@ import { NextPage } from "next";
 import { PlayerCard } from "@/entities/player";
 
 import Button from "@/widgets/button";
+import { getPlayers } from "@/shared/api/io-socket/players";
 
 const Home: NextPage = () => {
   return (
@@ -18,7 +19,14 @@ const Home: NextPage = () => {
       <main>
         <h2>Opponent</h2>
         <PlayerCard />
-        <Button variant="primary">Get All Users</Button>
+        <Button
+          variant="primary"
+          onClick={(e) => {
+            getPlayers();
+          }}
+        >
+          Get All Users
+        </Button>
       </main>
     </div>
   );

@@ -1,7 +1,9 @@
 import { socketInstance } from "./base";
 import type { GameResult, Player, UserChoice } from "./models";
 
-export const getPlayers = () => socketInstance?.emit("get_players");
+export const getPlayers = () => {
+  socketInstance?.emit("get_players");
+};
 
 type OnPlayersReceivedReturnType = string[];
 export type OnPlayersReceivedParams = (
@@ -13,7 +15,6 @@ export const onPlayersReceived = (arg: OnPlayersReceivedParams) =>
     "players_received",
     (payload: OnPlayersReceivedReturnType) => arg(payload)
   );
-
 type OnConnectedReturnType = Player;
 export type OnConnectedParams = (arg: OnConnectedReturnType) => void;
 
