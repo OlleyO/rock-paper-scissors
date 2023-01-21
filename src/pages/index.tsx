@@ -20,7 +20,10 @@ const Home: NextPage = () => {
       <main>
         <h2>Opponent</h2>
         <PlayerCard />
-        <Button onClick={() => players.getPlayers()} variant="primary">
+        <Button
+          onClick={() => players.getPlayers((pl) => console.log(pl))}
+          variant="primary"
+        >
           Get All Users
         </Button>
       </main>
