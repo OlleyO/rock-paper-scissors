@@ -1,0 +1,33 @@
+.playerCard {
+  max-width: 500px;
+  background-color: var(--card-bg-color);
+  border-radius: 26px;
+
+  padding: 20px;
+
+  color: #fff;
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .connectionStatus {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+
+    &.online {
+      background-color: var(--status-online-color);
+    }
+
+    &.offline {
+      background-color: var(--status-offline-color);
+    }
+
+    &.in-game {
+      background-color: var(--status-in-game-color);
+    }
+  }
+}
