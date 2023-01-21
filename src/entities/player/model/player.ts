@@ -18,6 +18,11 @@ export const playersReceived = createEvent<string[]>();
 
 $player.on(connected, (_, player) => ({ ...player }));
 $player.on(disconnected, (_, player) => ({ ...player }));
+$player.on(playersReceived, (_, players) => {
+  const user = $user.getState();
+
+  return { username: players.find((player) => player !== user) ?? "" };
+});
 $status.on(connected, (_, __) => "online");
 $status.on(disconnected, (_, __) => "offline");
 $status.on(playersReceived, (_, players) =>
