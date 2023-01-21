@@ -3,6 +3,7 @@ import { userModel } from "@/entities/user";
 import { selectors } from "@/entities/user/model";
 import { loginUserModel } from "@/features/login-user";
 import { initializeSocketConnection } from "@/shared/api/io-socket/base";
+import { getPlayers } from "@/shared/api/io-socket/players";
 import { useRouter } from "next/router";
 import { PropsWithChildren, useEffect } from "react";
 
@@ -17,7 +18,10 @@ const AuthWrapper: React.FC<PropsWithChildren> = ({ children }) => {
     } else {
       loginUserModel.effects.loginUserFx(user).then(() => router.push("/"));
       initializeSocketConnection(user);
+
       playerModel.subscribeSocketEvents();
+
+      getPlayers();
     }
   }, []);
 

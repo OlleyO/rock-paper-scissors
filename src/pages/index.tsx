@@ -4,11 +4,9 @@ import styles from "./styles.module.scss";
 
 import { NextPage } from "next";
 
-import { selectors } from "@/entities/player/model";
 import { PlayerCard } from "@/entities/player";
 
 import Button from "@/widgets/button";
-import { players } from "@/shared/api/io-socket";
 
 const Home: NextPage = () => {
   return (
@@ -20,12 +18,7 @@ const Home: NextPage = () => {
       <main>
         <h2>Opponent</h2>
         <PlayerCard />
-        <Button
-          onClick={() => players.getPlayers((pl) => console.log(pl))}
-          variant="primary"
-        >
-          Get All Users
-        </Button>
+        <Button variant="primary">Get All Users</Button>
       </main>
     </div>
   );

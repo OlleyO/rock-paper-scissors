@@ -2,6 +2,7 @@ import { createStore, createEvent, combine } from "effector";
 import { useStore } from "effector-react";
 import { Player } from "@/shared/api";
 import { players } from "@/shared/api/io-socket";
+import { $user } from "@/entities/user/model";
 
 type Status = "choice-made" | "online" | "offline" | "in-game";
 
@@ -19,7 +20,9 @@ $player.on(connected, (_, player) => ({ ...player }));
 $player.on(disconnected, (_, player) => ({ ...player }));
 $status.on(connected, (_, __) => "online");
 $status.on(disconnected, (_, __) => "offline");
-$status.on(playersReceived, (_, __) => "in-game");
+$status.on(playersReceived, (_, players) =>
+  players.length === 2 ? "online" : "offline"
+);
 
 const $playerWithStatus = combine([$player, $status]);
 
