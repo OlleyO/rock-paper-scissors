@@ -50,9 +50,6 @@ export const subscribeSocketEvents = () => {
   players.onConnected((payload) => connected(payload));
   players.onDisconnected((payload) => disconnected(payload));
   players.onPlayersReceived((payload) => playersReceived(payload));
-  players.onPlayersReceived((payload) => {
-    console.log("players", payload);
-  });
 };
 
 const usePlayer = () => {

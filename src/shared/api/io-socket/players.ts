@@ -32,8 +32,6 @@ export const onDisconnected = (arg: OnDisconnectedParams) => {
   );
 };
 
-export const disconnect = () => socketInstance?.disconnect();
-
 type OnOpponentMadeChoiceReturnType = Player;
 export type OnOpponentMadeChoiceParams = (
   arg: OnOpponentMadeChoiceReturnType
@@ -46,19 +44,4 @@ export const onOpponentMadeChoice = (arg: OnOpponentMadeChoiceParams) => {
   );
 };
 
-type OnGameFinishedReturnType = {
-  results: GameResult;
-};
-export type OnGameFinishedParams = (arg: OnGameFinishedReturnType) => void;
 
-export const onGameFinished = (arg: OnGameFinishedParams) => {
-  socketInstance?.on("game_finished", (result: OnGameFinishedReturnType) =>
-    arg(result)
-  );
-};
-
-export type ChooseElementParams = UserChoice;
-
-export const chooseElement = (arg: ChooseElementParams) => {
-  socketInstance?.emit("choose", arg);
-};
