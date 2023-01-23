@@ -1,7 +1,7 @@
 import Button from "@/widgets/button";
 import Input from "@/widgets/input";
 
-import { loginUserModel } from "..";
+import { loginUserModel } from "../..";
 import { userModel } from "@/entities/user";
 
 import styles from "./styles.module.scss";

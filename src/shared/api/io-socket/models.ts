@@ -4,9 +4,11 @@ export type Player = {
 
 export type UserChoice = "rock" | "paper" | "scissors";
 
-export type GameResult = {
+export type Game = {
   username: string;
   choice: UserChoice;
-}[];
+};
+
+export type GameResult = Game[];
 
 export type User = string;

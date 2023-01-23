@@ -1,5 +1,7 @@
 import { playerModel } from "@/entities/player";
+import { scoreModel } from "@/entities/score";
 import { userModel } from "@/entities/user";
+import { userChoiceModel } from "@/entities/user-choice";
 import { selectors } from "@/entities/user/model";
 import { loginUserModel } from "@/features/login-user";
 import { ioSocket } from "@/shared/api";
@@ -17,7 +19,12 @@ const AuthWrapper: React.FC<PropsWithChildren> = ({ children }) => {
     if (!user) {
       router.push("/login");
     } else {
-      loginUserModel.effects.loginUserFx(user).then(() => router.push("/"));
+      loginUserModel.effects.loginUserFx(user).then(() => {
+        playerModel.subscribeSocketEvents();
+        userChoiceModel.subscribeSocketEvents();
+        scoreModel.subscribeSocketEvents();
+        router.push("/");
+      });
 
       getPlayers();
     }

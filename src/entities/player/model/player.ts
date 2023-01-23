@@ -4,7 +4,7 @@ import { Player } from "@/shared/api";
 import { players } from "@/shared/api/io-socket";
 import { $user } from "@/entities/user/model";
 
-type Status = "choice-made" | "online" | "offline" | "in-game";
+type Status = "choice-made" | "online" | "offline";
 
 export const $player = createStore<Player>({
   username: "",
@@ -15,6 +15,7 @@ export const $status = createStore<Status>("offline");
 export const connected = createEvent<Player>();
 export const disconnected = createEvent<Player>();
 export const playersReceived = createEvent<string[]>();
+export const choiceMade = createEvent<Player>();
 
 $player.on(connected, (_, player) => ({ ...player }));
 $player.on(disconnected, (_, player) => ({ ...player }));
@@ -26,6 +27,8 @@ $player.on(playersReceived, (_, players) => {
 
   return { username: players.find((player) => player !== user) ?? "" };
 });
+$player.on(choiceMade, (_, player) => ({ ...player }));
+
 $status.on(connected, (_, __) => "online");
 $status.on(disconnected, (_, __) => "offline");
 $status.on(playersReceived, (_, players) =>
@@ -33,6 +36,7 @@ $status.on(playersReceived, (_, players) =>
     ? "online"
     : "offline"
 );
+$status.on(choiceMade, (_, __) => "choice-made");
 
 const $playerWithStatus = combine([$player, $status]);
 

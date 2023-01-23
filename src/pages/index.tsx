@@ -8,6 +8,8 @@ import { PlayerCard } from "@/entities/player";
 
 import Button from "@/widgets/button";
 import { getPlayers } from "@/shared/api/io-socket/players";
+import ElementButtonsList from "@/features/make-choice/ui/element-buttons-list";
+import ScoreView from "@/entities/score/ui/score-view";
 
 const Home: NextPage = () => {
   return (
@@ -27,6 +29,8 @@ const Home: NextPage = () => {
         >
           Get All Users
         </Button>
+        <ElementButtonsList />
+        <ScoreView />
       </main>
     </div>
   );
