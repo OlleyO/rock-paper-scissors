@@ -6,14 +6,14 @@
  * @throwable
  */
 const getEnvVar = (key: string) => {
-  if (process.env[key] === undefined) {
-    throw new Error(`Env variable ${key} is required`);
-  }
+  // if (process.env[key] === undefined) {
+  //   throw new Error(`Env variable ${key} is required`);
+  // }
   return process.env[key] || "";
 };
 
 /** API entrypoint */
-// export const API_URL = getEnvVar("NEXT_PUBLIC_API_URL");
+export const API_URL = getEnvVar("NEXT_PUBLIC_API_URL");
 
 export const NODE_ENV = getEnvVar("NODE_ENV");
 

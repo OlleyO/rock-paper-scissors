@@ -8,9 +8,9 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: React.FC<Props> = ({
-  variant,
-  className,
   children,
+  className,
+  variant,
   ...props
 }) => {
   return (
