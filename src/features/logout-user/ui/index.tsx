@@ -1,6 +1,8 @@
-import Button from "@/widgets/button";
-import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+
+import Button from "@/widgets/button";
+
 import { logoutUserModel } from "..";
 
 import styles from "./styles.module.scss";

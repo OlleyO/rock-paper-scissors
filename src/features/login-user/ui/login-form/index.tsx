@@ -1,11 +1,12 @@
+import { useRouter } from "next/router";
+
+import { userModel } from "@/entities/user";
 import Button from "@/widgets/button";
 import Input from "@/widgets/input";
 
 import { loginUserModel } from "../..";
-import { userModel } from "@/entities/user";
 
 import styles from "./styles.module.scss";
-import { useRouter } from "next/router";
 
 export const UserLoginForm: React.FC = () => {
   const router = useRouter();

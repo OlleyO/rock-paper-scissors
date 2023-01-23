@@ -1,9 +1,10 @@
+import { userChoiceModel } from "@/entities/user-choice";
 import { UserChoice } from "@/shared/api";
 import Button from "@/widgets/button";
-import styles from "./styles.module.scss";
 
-import { userChoiceModel } from "@/entities/user-choice";
 import { makeChoiceModel } from "../..";
+
+import styles from "./styles.module.scss";
 
 interface Props {
   element: UserChoice;
@@ -14,7 +15,7 @@ const ElementButton: React.FC<Props> = ({ element }) => {
     <Button
       onClick={() => {
         userChoiceModel.events.choiceMade(element);
-        makeChoiceModel.events.makeChoice()
+        makeChoiceModel.events.makeChoice();
       }}
       className={styles.elementButton}
       variant="primary"

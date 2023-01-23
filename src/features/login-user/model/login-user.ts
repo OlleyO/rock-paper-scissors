@@ -1,8 +1,8 @@
 import { createEffect } from "effector";
-import { userModel } from "@/entities/user";
 
-import { logIn } from "@/shared/api/io-socket/user";
 import { playerModel } from "@/entities/player";
+import { userModel } from "@/entities/user";
+import { logIn } from "@/shared/api/io-socket/user";
 
 const loginUserFx = createEffect((username: string) => {
   localStorage.setItem("user", username);

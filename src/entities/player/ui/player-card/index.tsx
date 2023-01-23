@@ -1,4 +1,5 @@
 import cn from "classnames";
+
 import { playerModel } from "../..";
 
 import styles from "./styles.module.scss";

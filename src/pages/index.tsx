@@ -1,15 +1,13 @@
-import LogoutUser from "@/features/logout-user/ui";
-
-import styles from "./styles.module.scss";
-
 import { NextPage } from "next";
 
 import { PlayerCard } from "@/entities/player";
-
-import Button from "@/widgets/button";
-import { getPlayers } from "@/shared/api/io-socket/players";
-import ElementButtonsList from "@/features/make-choice/ui/element-buttons-list";
 import ScoreView from "@/entities/score/ui/score-view";
+import LogoutUser from "@/features/logout-user/ui";
+import ElementButtonsList from "@/features/make-choice/ui/element-buttons-list";
+import { getPlayers } from "@/shared/api/io-socket/players";
+import Button from "@/widgets/button";
+
+import styles from "./styles.module.scss";
 
 const Home: NextPage = () => {
   return (

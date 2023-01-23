@@ -1,10 +1,11 @@
 import { createEffect, createEvent, createStore, forward } from "effector";
-import { userModel } from "@/entities/user";
-import { playerModel } from "@/entities/player";
-import { Game, GameResult } from "@/shared/api";
-import produce from "immer";
-import { players } from "@/shared/api/io-socket";
 import { useStore } from "effector-react";
+import produce from "immer";
+
+import { playerModel } from "@/entities/player";
+import { userModel } from "@/entities/user";
+import { Game, GameResult } from "@/shared/api";
+import { players } from "@/shared/api/io-socket";
 
 export type Score = {
   username: string;

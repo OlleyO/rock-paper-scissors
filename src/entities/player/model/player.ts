@@ -1,8 +1,9 @@
-import { createStore, createEvent, combine } from "effector";
+import { combine, createEvent, createStore } from "effector";
 import { useStore } from "effector-react";
+
+import { $user } from "@/entities/user/model";
 import { Player } from "@/shared/api";
 import { players } from "@/shared/api/io-socket";
-import { $user } from "@/entities/user/model";
 
 type Status = "choice-made" | "online" | "offline";
 

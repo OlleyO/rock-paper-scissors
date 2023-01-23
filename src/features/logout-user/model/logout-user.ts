@@ -1,4 +1,5 @@
 import { createEffect } from "effector";
+
 import { userModel } from "@/entities/user";
 import { disconnect } from "@/shared/api/io-socket/players";
 import { logOut } from "@/shared/api/io-socket/user";

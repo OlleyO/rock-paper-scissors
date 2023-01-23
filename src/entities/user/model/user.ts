@@ -1,6 +1,7 @@
-import { User } from "@/shared/api";
 import { createEvent, createStore } from "effector";
 import { useStore } from "effector-react";
+
+import { User } from "@/shared/api";
 
 export const $user = createStore<User>("");
 

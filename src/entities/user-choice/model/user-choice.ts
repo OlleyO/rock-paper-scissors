@@ -1,7 +1,8 @@
-import { createStore, createEvent } from "effector";
-import { ioSocket, Player, UserChoice } from "@/shared/api";
+import { createEvent, createStore } from "effector";
 import { useStore } from "effector-react";
+
 import { $status } from "@/entities/player/model";
+import { ioSocket, Player, UserChoice } from "@/shared/api";
 
 export const $userChoice = createStore<UserChoice | null>(null);
 export const $opponentMadeChoice = createStore<boolean>(false);

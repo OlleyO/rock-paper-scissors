@@ -1,8 +1,9 @@
+import { createEffect, createEvent } from "effector";
+
 import { $status } from "@/entities/player/model";
 import { userChoiceModel } from "@/entities/user-choice";
 import { $userChoice } from "@/entities/user-choice/model";
 import { ioSocket, UserChoice } from "@/shared/api";
-import { createEffect, createEvent } from "effector";
 
 const makeChoice = createEvent();
 

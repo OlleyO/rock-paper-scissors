@@ -1,7 +1,8 @@
 import type { AppProps } from "next/app";
 
-import "@/app/index.scss";
 import AuthWrapper from "./auth-wrapper";
+
+import "@/app/index.scss";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
