@@ -2,8 +2,7 @@ import { combine, createEvent, createStore } from "effector";
 import { useStore } from "effector-react";
 
 import { $user } from "@/entities/user/model";
-import { Player } from "@/shared/api";
-import { players } from "@/shared/api/io-socket";
+import { ioSocket, Player } from "@/shared/api";
 
 type Status = "choice-made" | "online" | "offline";
 
@@ -47,9 +46,9 @@ $playerWithStatus.watch((state, _) => {
 });
 
 export const subscribeSocketEvents = () => {
-  players.onConnected((payload) => connected(payload));
-  players.onDisconnected((payload) => disconnected(payload));
-  players.onPlayersReceived((payload) => playersReceived(payload));
+  ioSocket.players.onConnected((payload) => connected(payload));
+  ioSocket.players.onDisconnected((payload) => disconnected(payload));
+  ioSocket.players.onPlayersReceived((payload) => playersReceived(payload));
 };
 
 const usePlayer = () => {

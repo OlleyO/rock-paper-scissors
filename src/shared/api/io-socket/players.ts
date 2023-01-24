@@ -1,14 +1,12 @@
 import { socketInstance } from "./base";
-import type { GameResult, Player, UserChoice } from "./models";
+import type { Player } from "./models";
 
 export const getPlayers = () => {
   socketInstance?.emit("get_players");
 };
 
 type OnPlayersReceivedReturnType = string[];
-export type OnPlayersReceivedParams = (
-  arg: OnPlayersReceivedReturnType
-) => void;
+type OnPlayersReceivedParams = (arg: OnPlayersReceivedReturnType) => void;
 
 export const onPlayersReceived = (arg: OnPlayersReceivedParams) =>
   socketInstance?.on(
@@ -16,7 +14,7 @@ export const onPlayersReceived = (arg: OnPlayersReceivedParams) =>
     (payload: OnPlayersReceivedReturnType) => arg(payload)
   );
 type OnConnectedReturnType = Player;
-export type OnConnectedParams = (arg: OnConnectedReturnType) => void;
+type OnConnectedParams = (arg: OnConnectedReturnType) => void;
 
 export const onConnected = (arg: OnConnectedParams) =>
   socketInstance?.on("connected", (payload: OnConnectedReturnType) =>
@@ -24,7 +22,7 @@ export const onConnected = (arg: OnConnectedParams) =>
   );
 
 type OnDisconnectedReturnType = Player;
-export type OnDisconnectedParams = (arg: OnDisconnectedReturnType) => void;
+type OnDisconnectedParams = (arg: OnDisconnectedReturnType) => void;
 
 export const onDisconnected = (arg: OnDisconnectedParams) => {
   socketInstance?.on("disconnected", (payload: OnDisconnectedReturnType) =>
@@ -33,9 +31,7 @@ export const onDisconnected = (arg: OnDisconnectedParams) => {
 };
 
 type OnOpponentMadeChoiceReturnType = Player;
-export type OnOpponentMadeChoiceParams = (
-  arg: OnOpponentMadeChoiceReturnType
-) => void;
+type OnOpponentMadeChoiceParams = (arg: OnOpponentMadeChoiceReturnType) => void;
 
 export const onOpponentMadeChoice = (arg: OnOpponentMadeChoiceParams) => {
   socketInstance?.on(
@@ -43,5 +39,3 @@ export const onOpponentMadeChoice = (arg: OnOpponentMadeChoiceParams) => {
     (payload: OnOpponentMadeChoiceReturnType) => arg(payload)
   );
 };
-
-

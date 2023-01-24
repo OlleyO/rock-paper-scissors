@@ -4,8 +4,7 @@ import produce from "immer";
 
 import { playerModel } from "@/entities/player";
 import { userModel } from "@/entities/user";
-import { Game, GameResult } from "@/shared/api";
-import { games } from "@/shared/api/io-socket";
+import { Game, GameResult, ioSocket } from "@/shared/api";
 
 export type Score = {
   username: string;
@@ -61,7 +60,7 @@ $score.on(addPoint, (state, winner) => {
 });
 
 export const subscribeSocketEvents = () => {
-  games.onGameFinished((payload) => findWinnerFx(payload.results));
+  ioSocket.games.onGameFinished((payload) => findWinnerFx(payload.results));
 };
 
 forward({

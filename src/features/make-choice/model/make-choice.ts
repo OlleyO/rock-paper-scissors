@@ -1,4 +1,4 @@
-import { createEffect, createEvent } from "effector";
+import { createEvent } from "effector";
 
 import { $userChoice } from "@/entities/user-choice/model";
 import { ioSocket } from "@/shared/api";
