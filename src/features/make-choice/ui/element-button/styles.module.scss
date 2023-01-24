@@ -1,0 +1,14 @@
+.elementButton {
+  border: 0;
+  padding: 0;
+
+  &:focus {
+    translate: 0px 50px;
+  }
+
+  .imageWrapper {
+    position: relative;
+    width: 103px;
+    height: 97px;
+  }
+}

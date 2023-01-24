@@ -17,16 +17,8 @@ const Home: NextPage = () => {
         <LogoutUser />
       </header>
       <main>
-        <h2>Opponent</h2>
         <PlayerCard />
-        <Button
-          variant="primary"
-          onClick={(e) => {
-            getPlayers();
-          }}
-        >
-          Get All Users
-        </Button>
+
         <ElementButtonsList />
         <ScoreView />
       </main>

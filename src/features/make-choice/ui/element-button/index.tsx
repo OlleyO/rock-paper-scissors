@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { userChoiceModel } from "@/entities/user-choice";
 import { UserChoice } from "@/shared/api";
 import Button from "@/widgets/button";
@@ -18,9 +20,11 @@ const ElementButton: React.FC<Props> = ({ element }) => {
         makeChoiceModel.events.makeChoice();
       }}
       className={styles.elementButton}
-      variant="primary"
+      variant="game-choice"
     >
-      {element}
+      <div className={styles.imageWrapper}>
+        <Image src={`/${element}.png`} alt={element} fill />
+      </div>
     </Button>
   );
 };

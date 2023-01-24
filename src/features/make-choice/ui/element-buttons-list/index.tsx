@@ -2,15 +2,17 @@ import { UserChoice } from "@/shared/api";
 
 import ElementButton from "../element-button";
 
-const elements: UserChoice[] = ["paper", "rock", "scissors"];
+const elements = new Set<UserChoice>(["paper", "rock", "scissors"]);
 
-const ElementButtonsList = () => {
+import styles from "./styles.module.scss";
+
+const ElementButtonsList: React.FC = () => {
   return (
-    <>
-      {elements.map((element) => (
+    <div className={styles.buttonList}>
+      {Array.from(elements).map((element) => (
         <ElementButton key={element} element={element} />
       ))}
-    </>
+    </div>
   );
 };
 

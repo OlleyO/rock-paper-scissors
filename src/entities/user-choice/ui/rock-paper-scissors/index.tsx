@@ -1,13 +1,19 @@
+import { ButtonHTMLAttributes } from "react";
+
+import Button from "@/widgets/button";
+
 import styles from "./styles.module.scss";
 
-export const Rock: React.FC = () => {
-  return <div></div>;
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {}
+
+export const Rock: React.FC<Props> = () => {
+  return <Button variant="game-choice">Rock</Button>;
 };
 
-export const Paper: React.FC = () => {
-  return <div></div>;
+export const Paper: React.FC<Props> = () => {
+  return <Button variant="game-choice">Paper</Button>;
 };
 
-export const Scissors: React.FC = () => {
-  return <div></div>;
+export const Scissors: React.FC<Props> = () => {
+  return <Button variant="game-choice">Scissors</Button>;
 };

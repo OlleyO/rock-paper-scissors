@@ -4,7 +4,7 @@ import cn from "classnames";
 import styles from "./styles.module.scss";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "game-choice";
 }
 
 const Button: React.FC<Props> = ({
