@@ -59,14 +59,14 @@ $score.on(addPoint, (state, winner) => {
   }
 });
 
-export const subscribeSocketEvents = () => {
-  ioSocket.games.onGameFinished((payload) => findWinnerFx(payload.results));
-};
-
 forward({
   from: findWinnerFx.doneData,
   to: addPoint,
 });
+
+export const subscribeSocketEvents = () => {
+  ioSocket.games.onGameFinished((payload) => findWinnerFx(payload.results));
+};
 
 const useScore = () => useStore($score);
 

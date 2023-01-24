@@ -9,7 +9,6 @@ type Status = "choice-made" | "online" | "offline";
 export const $player = createStore<Player>({
   username: "",
 });
-
 export const $status = createStore<Status>("offline");
 
 export const connected = createEvent<Player>();
@@ -17,26 +16,28 @@ export const disconnected = createEvent<Player>();
 export const playersReceived = createEvent<string[]>();
 export const choiceMade = createEvent<Player>();
 
-$player.on(connected, (_, player) => ({ ...player }));
-$player.on(disconnected, (_, player) => ({ ...player }));
-$player.on(playersReceived, (_, players) => {
-  const user = $user.getState();
+$player
+  .on(connected, (_, player) => ({ ...player }))
+  .on(disconnected, (_, player) => ({ ...player }))
+  .on(playersReceived, (_, players) => {
+    const user = $user.getState();
 
-  console.log("user", user);
-  console.log("players", players);
+    console.log("user", user);
+    console.log("players", players);
 
-  return { username: players.find((player) => player !== user) ?? "" };
-});
-$player.on(choiceMade, (_, player) => ({ ...player }));
+    return { username: players.find((player) => player !== user) ?? "" };
+  })
+  .on(choiceMade, (_, player) => ({ ...player }));
 
-$status.on(connected, (_, __) => "online");
-$status.on(disconnected, (_, __) => "offline");
-$status.on(playersReceived, (_, players) =>
-  players.find((player) => player === $player.getState().username)
-    ? "online"
-    : "offline"
-);
-$status.on(choiceMade, (_, __) => "choice-made");
+$status
+  .on(connected, (_, __) => "online")
+  .on(disconnected, (_, __) => "offline")
+  .on(playersReceived, (_, players) =>
+    players.find((player) => player === $player.getState().username)
+      ? "online"
+      : "offline"
+  )
+  .on(choiceMade, (_, __) => "choice-made");
 
 const $playerWithStatus = combine([$player, $status]);
 

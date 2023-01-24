@@ -3,12 +3,8 @@ import { useRouter } from "next/router";
 
 import { playerModel } from "@/entities/player";
 import { scoreModel } from "@/entities/score";
-import { userModel } from "@/entities/user";
-import { selectors } from "@/entities/user/model";
 import { userChoiceModel } from "@/entities/user-choice";
 import { loginUserModel } from "@/features/login-user";
-import { ioSocket } from "@/shared/api";
-import { initializeSocketConnection } from "@/shared/api/io-socket/base";
 import { getPlayers } from "@/shared/api/io-socket/players";
 
 const AuthWrapper: React.FC<PropsWithChildren> = ({ children }) => {

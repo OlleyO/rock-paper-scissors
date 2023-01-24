@@ -4,7 +4,6 @@ import { useStore } from "effector-react";
 import { User } from "@/shared/api";
 
 export const $user = createStore<User>("");
-
 export const $usernameQuery = createStore<string>("");
 
 export const usernameQueryChanged = createEvent<string>();
