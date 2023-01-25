@@ -17,8 +17,6 @@ const $score = combine(
   })
 );
 
-$score.watch((state) => console.log(state));
-
 const findWinnerFx = createEffect((result: GameResult) => {
   const [user1, user2] = result;
 
