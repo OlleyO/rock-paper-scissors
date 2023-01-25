@@ -10,6 +10,7 @@
             <li>Widgets</li>
         </ul>
     </article>
+    <p>Some empty scss files were kept on purpose, so they can be used later</p>
 </section>
 <section>
     <article>
