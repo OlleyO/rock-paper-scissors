@@ -1,11 +1,11 @@
 import { createEffect } from "effector";
 
 import { userModel } from "@/entities/user";
-import { logOut } from "@/shared/api/io-socket/user";
+import { ioSocket } from "@/shared/api";
 
 const logoutUserFx = createEffect(() => {
   localStorage.clear();
-  logOut();
+  ioSocket.user.logOut();
 
   return "";
 });

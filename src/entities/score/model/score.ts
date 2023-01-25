@@ -1,6 +1,6 @@
 import { combine, createEffect, createEvent, forward } from "effector";
 import { useStore } from "effector-react";
-import produce, { enableMapSet } from "immer";
+import produce from "immer";
 
 import { $player } from "@/entities/player/model";
 import { $user } from "@/entities/user/model";

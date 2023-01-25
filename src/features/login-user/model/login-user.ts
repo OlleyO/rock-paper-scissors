@@ -2,11 +2,11 @@ import { createEffect } from "effector";
 
 import { playerModel } from "@/entities/player";
 import { userModel } from "@/entities/user";
-import { logIn } from "@/shared/api/io-socket/user";
+import { ioSocket } from "@/shared/api";
 
 const loginUserFx = createEffect((username: string) => {
   localStorage.setItem("user", username);
-  logIn(username);
+  ioSocket.user.logIn(username);
   playerModel.subscribeSocketEvents();
 
   return username;
