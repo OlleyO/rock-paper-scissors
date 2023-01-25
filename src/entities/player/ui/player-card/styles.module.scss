@@ -31,8 +31,8 @@
       background-color: var(--status-offline-color);
     }
 
-    &.in-game {
-      background-color: var(--status-in-game-color);
+    &.choice-made {
+      background-color: var(--status-choice-made-color);
     }
   }
 }
