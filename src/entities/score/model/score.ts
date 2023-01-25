@@ -17,14 +17,10 @@ const $score = combine(
   })
 );
 
-// const $score = createStore<Score>(initialScore);
-
 $score.watch((state) => console.log(state));
 
 const findWinnerFx = createEffect((result: GameResult) => {
   const [user1, user2] = result;
-
-  console.log("Find winner");
 
   return rockPaperScissors(user1, user2);
 });
@@ -48,12 +44,9 @@ const rockPaperScissors = (player1: Game, player2: Game) => {
 };
 
 const addPoint = createEvent<string | null>();
-const resetChoice = createEvent();
 
 $score.on(addPoint, (state, winner) => {
-  console.log("Winner", winner);
   if (winner) {
-    console.log(winner);
     return produce(state, (draft) => {
       draft[winner] += 1;
     });
@@ -69,14 +62,13 @@ forward({
 
 export const subscribeSocketEvents = () => {
   ioSocket.games.onGameFinished((payload) => {
-    console.log("Game finished");
     findWinnerFx(payload.results);
   });
 };
 
 const $scoreView = $score.map((state) => {
   const tmp = [];
-  console.log(state);
+
   for (const key in state) {
     tmp.push({
       username: key,

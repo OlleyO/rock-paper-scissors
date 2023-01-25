@@ -13,8 +13,6 @@ export const usernameQueryChanged = createEvent<string>();
 
 $usernameQuery.on(usernameQueryChanged, (_, payload) => payload);
 
-$user.watch((state, _) => console.log("User", state));
-
 const useUser = (): Player => useStore($user);
 const useUsernameQuery = (): string => useStore($usernameQuery);
 

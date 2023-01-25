@@ -15,7 +15,7 @@ export const PlayerCard: React.FC = () => {
       <div className={styles.row}>
         <p>Username: {player[0].username}</p>
       </div>
-      <div className={styles.row}>
+      <div className={styles.status}>
         <p>Status: </p>
         <div className={cn(styles.connectionStatus, styles[player[1]])} />
       </div>

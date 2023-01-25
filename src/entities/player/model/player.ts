@@ -22,9 +22,6 @@ $player
   .on(playersReceived, (_, players) => {
     const user = $user.getState();
 
-    console.log("user", user);
-    console.log("players", players);
-
     return {
       username: players.find((player) => player !== user.username) ?? "",
     };
@@ -42,11 +39,6 @@ $status
   .on(choiceMade, (_, __) => "choice-made");
 
 const $playerWithStatus = combine([$player, $status]);
-
-$playerWithStatus.watch((state, _) => {
-  console.log("Opponent", state[0].username);
-  console.log("Status", state[1]);
-});
 
 export const subscribeSocketEvents = () => {
   ioSocket.players.onConnected((payload) => connected(payload));
