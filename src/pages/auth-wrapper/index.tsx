@@ -21,10 +21,10 @@ const AuthWrapper: React.FC<PropsWithChildren> = ({ children }) => {
         userChoiceModel.subscribeSocketEvents();
         scoreModel.subscribeSocketEvents();
 
+        getPlayers();
+
         router.push("/");
       });
-
-      getPlayers();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
