@@ -20,6 +20,7 @@ const AuthWrapper: React.FC<PropsWithChildren> = ({ children }) => {
         playerModel.subscribeSocketEvents();
         userChoiceModel.subscribeSocketEvents();
         scoreModel.subscribeSocketEvents();
+
         router.push("/");
       });
 

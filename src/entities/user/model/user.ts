@@ -1,9 +1,12 @@
 import { createEvent, createStore } from "effector";
 import { useStore } from "effector-react";
 
-import { User } from "@/shared/api";
+import { Player } from "@/shared/api";
 
-export const $user = createStore<User>("");
+export const $user = createStore<Player>({
+  username: "",
+});
+
 export const $usernameQuery = createStore<string>("");
 
 export const usernameQueryChanged = createEvent<string>();
@@ -12,7 +15,7 @@ $usernameQuery.on(usernameQueryChanged, (_, payload) => payload);
 
 $user.watch((state, _) => console.log("User", state));
 
-const useUser = (): User => useStore($user);
+const useUser = (): Player => useStore($user);
 const useUsernameQuery = (): string => useStore($usernameQuery);
 
 export const selectors = {

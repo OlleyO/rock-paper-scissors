@@ -10,6 +10,8 @@ const logoutUserFx = createEffect(() => {
   return "";
 });
 
-userModel.$user.on(logoutUserFx.doneData, (_, payload) => payload);
+userModel.$user.on(logoutUserFx.doneData, (_, payload) => ({
+  username: payload,
+}));
 
 export const effects = { logoutUserFx };

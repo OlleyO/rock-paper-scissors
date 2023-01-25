@@ -25,7 +25,9 @@ $player
     console.log("user", user);
     console.log("players", players);
 
-    return { username: players.find((player) => player !== user) ?? "" };
+    return {
+      username: players.find((player) => player !== user.username) ?? "",
+    };
   })
   .on(choiceMade, (_, player) => ({ ...player }));
 

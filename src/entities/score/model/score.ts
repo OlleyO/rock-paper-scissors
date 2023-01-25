@@ -1,27 +1,30 @@
-import { createEffect, createEvent, createStore, forward } from "effector";
+import { combine, createEffect, createEvent, forward } from "effector";
 import { useStore } from "effector-react";
-import produce from "immer";
+import produce, { enableMapSet } from "immer";
 
-import { playerModel } from "@/entities/player";
-import { userModel } from "@/entities/user";
+import { $player } from "@/entities/player/model";
+import { $user } from "@/entities/user/model";
 import { Game, GameResult, ioSocket } from "@/shared/api";
 
-export type Score = {
-  username: string;
-  score: number;
-}[];
+const $score = combine(
+  {
+    user: $user,
+    player: $player,
+  },
+  ({ user, player }) => ({
+    [user.username]: 0,
+    [player.username]: 0,
+  })
+);
 
-const initialScore = new Map<string, number>();
-
-initialScore.set(userModel.$user.getState(), 0);
-initialScore.set(playerModel.$player.getState().username, 0);
-
-const $score = createStore<Map<string, number>>(initialScore);
+// const $score = createStore<Score>(initialScore);
 
 $score.watch((state) => console.log(state));
 
 const findWinnerFx = createEffect((result: GameResult) => {
   const [user1, user2] = result;
+
+  console.log("Find winner");
 
   return rockPaperScissors(user1, user2);
 });
@@ -45,14 +48,14 @@ const rockPaperScissors = (player1: Game, player2: Game) => {
 };
 
 const addPoint = createEvent<string | null>();
+const resetChoice = createEvent();
 
 $score.on(addPoint, (state, winner) => {
+  console.log("Winner", winner);
   if (winner) {
+    console.log(winner);
     return produce(state, (draft) => {
-      const winnerPoints = draft.get(winner);
-      if (winnerPoints) {
-        draft.set(winner, winnerPoints + 1);
-      }
+      draft[winner] += 1;
     });
   } else {
     return state;
@@ -65,10 +68,26 @@ forward({
 });
 
 export const subscribeSocketEvents = () => {
-  ioSocket.games.onGameFinished((payload) => findWinnerFx(payload.results));
+  ioSocket.games.onGameFinished((payload) => {
+    console.log("Game finished");
+    findWinnerFx(payload.results);
+  });
 };
 
-const useScore = () => useStore($score);
+const $scoreView = $score.map((state) => {
+  const tmp = [];
+  console.log(state);
+  for (const key in state) {
+    tmp.push({
+      username: key,
+      score: state[key],
+    });
+  }
+
+  return tmp;
+});
+
+const useScore = () => useStore($scoreView);
 
 export const selectors = {
   useScore,

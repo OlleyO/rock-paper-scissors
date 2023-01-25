@@ -12,6 +12,8 @@ const loginUserFx = createEffect((username: string) => {
   return username;
 });
 
-userModel.$user.on(loginUserFx.doneData, (_, payload) => payload);
+userModel.$user.on(loginUserFx.doneData, (_, payload) => ({
+  username: payload,
+}));
 
 export const effects = { loginUserFx };
